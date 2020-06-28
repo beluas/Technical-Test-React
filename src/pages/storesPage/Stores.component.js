@@ -17,7 +17,6 @@ const Stores = ({ fetchStoreRequest, stores, itemToCompareID, history }) => {
 	let storesToShow = createStoresToShow(stores, itemToCompareID);
 
 	let sortedStores = sortStoresToShow(storesToShow);
-	//console.log("sortedStores", sortedStores);
 	storesToShow = sortedStores.length ? (
 		sortedStores.map((store) => <Store key={store.id} {...store} />)
 	) : (
