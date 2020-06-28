@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchAllItemsPending } from "./redux/items/items.actions";
+import { Route, Switch } from "react-router-dom";
+import Homepage from "./pages/homepage/Homepage.component";
+import Stores from "./pages/storesPage/Stores.component";
+import Header from "./components/header/Header.component";
+import { fetchStoresPending } from "./redux/stores/stores.actions";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = ({ fetchAllItemsPending, fetchStoresPending }) => {
+	useEffect(() => {
+		fetchAllItemsPending();
+		fetchStoresPending();
+	}, []);
 
-export default App;
+	return (
+		<section className="app">
+			<Header />
+			<Switch>
+				<Route exact path="/" component={Homepage} />
+				<Route path="/stores" component={Stores} />
+			</Switch>
+		</section>
+	);
+};
+
+const dispatchToProps = (dispatch) => ({
+	fetchAllItemsPending: () => dispatch(fetchAllItemsPending()),
+	fetchStoresPending: () => dispatch(fetchStoresPending()),
+});
+
+export default connect(null, dispatchToProps)(App);
