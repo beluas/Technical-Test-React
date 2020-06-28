@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { fetchStoresPending } from "../../redux/stores/stores.actions";
+import React from "react";
 import { connect } from "react-redux";
 import {
 	selectStores,
@@ -15,8 +14,6 @@ import { Redirect, Link } from "react-router-dom";
 import { EmptyMessageContainer, ContainerStoresPage } from "./stores.styles";
 
 const Stores = ({ fetchStoreRequest, stores, itemToCompareID, history }) => {
-	useEffect(() => {}, []);
-
 	let storesToShow = createStoresToShow(stores, itemToCompareID);
 
 	let sortedStores = sortStoresToShow(storesToShow);
@@ -43,13 +40,9 @@ const Stores = ({ fetchStoreRequest, stores, itemToCompareID, history }) => {
 	);
 };
 
-const dispatchToProps = (dispatch) => ({
-	fetchStoreRequest: () => dispatch(fetchStoresPending()),
-});
-
 const stateToProps = createStructuredSelector({
 	stores: selectStores,
 	itemToCompareID: selectItemsToCompare,
 });
 
-export default connect(stateToProps, dispatchToProps)(Stores);
+export default connect(stateToProps, null)(Stores);
