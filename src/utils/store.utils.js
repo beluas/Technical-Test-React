@@ -8,10 +8,6 @@ export const sortArrOfObjByProp = (arr, prop, asc = "asc") => {
 		? newArr.sort((a, b) => a[prop] - b[prop])
 		: newArr.sort((a, b) => b[prop] - a[prop]);
 
-	// If the array doesn't change we want to assign a value false to understand that it didn't change.
-
-	// This to solve the edge case of stores already sorted by distance in the Database by default with the function sortStoresToShow() which re-sort them if sortedStores array is equal to the initial stores array even if they are sorted by default.
-
 	for (let i = 0; i < newArr.length; i++) {
 		if (newArr[i + 1]) {
 			if (newArr[i].distance === newArr[i + 1].distance) {
