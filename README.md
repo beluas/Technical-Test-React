@@ -2,9 +2,13 @@
 Sviluppa una mini web app in React che gestisca la logistica di alcuni magazzini, con l’obiettivo
 di poter effettuare il ristoccaggio di determinati articoli nei vari magazzini.
 La web app è composta da 3 step:
+
 ● Pagina di ricerca dei prodotti
+
 ● Pagina di selezione del magazzino
+
 ● Thank you page
+
 Trovi tutti i template in allegato.
 
 Per il primo step hai a disposizione un elenco di prodotti in un file JSON (file items.json, che
